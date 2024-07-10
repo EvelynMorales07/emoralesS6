@@ -5,8 +5,20 @@
              Title="vAgregar">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            Text="Agregar estudiante"             
+            HorizontalOptions="Center" 
+            FontSize="20"/>
+
+        <Entry x:Name="txtNombre"
+               Placeholder="Ingrese el nombre"/>
+        <Entry x:Name="txtApellido"
+               Placeholder="Ingrese el apellido"/>
+        <Entry x:Name="txtEdad"
+               Placeholder="Ingrese la edad"/>
+        <Button x:Name="btnAgregar"
+                Text="Agregar estudiante"
+                Clicked="btnAgregar_Clicked"/>
+
+
     </VerticalStackLayout>
 </ContentPage>

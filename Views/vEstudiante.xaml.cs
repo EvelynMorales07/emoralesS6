@@ -13,18 +13,25 @@ public partial class vEstudiante : ContentPage
 	public vEstudiante()
 	{
 		InitializeComponent();
+		mostrar();
 	}
 
 	public async void mostrar()
 	{
 		var content = await cliente.GetStringAsync(Url);
-		List<Models.Estudiante> mostrar = new JsonConvert.DeserializeObject<List<Models.Estudiante>>(content);
+		List<Models.Estudiante> mostrar = JsonConvert.DeserializeObject<List<Models.Estudiante>>(content);
         est =new ObservableCollection<Models.Estudiante>(mostrar);
 		listaEstudiates.ItemsSource = est;
 	}
 
     private void btnAgregar_Clicked(object sender, EventArgs e)
     {
+		Navigation.PushAsync(new Views.vAgregar());
+    }
 
+    private void listaEstudiates_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+		var objEstudiante = (Estudiante)e.SelectedItem;
+		Navigation.PushAsync(new vActEliminar(objEstudiante));
     }
 }

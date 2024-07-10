@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="emoralesS6.Views.vEstudiante"
              Title="vEstudiante">
+    
     <VerticalStackLayout
         Spacing="20"
         Padding="20">
@@ -10,14 +11,15 @@
             Text="Semana 6: Consumo WS"
             FontSize="20"
             HorizontalOptions="Center" />
-
-        <ListView x:Name="listaEstudiates">
+            <ScrollView>
+        <ListView x:Name="listaEstudiates" ItemSelected="listaEstudiates_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
+                        <StackLayout>                            
                             <Label x:Name="lblNombre" Text="{Binding nombre}"/>
                             <Label x:Name="lblApellido" Text="{Binding apellido}"/>
+                            <Label x:Name="lblEdad" Text="{Binding edad}"/>
 
                         </StackLayout>
                     </ViewCell>
@@ -26,10 +28,11 @@
             </ListView.ItemTemplate>
             
         </ListView>
-        <Button x:Name="btnAgregar"
+            </ScrollView>
+            <Button x:Name="btnAgregar"
                 Text="Agregar estudiante"
                 Clicked="btnAgregar_Clicked"/>
-        
-        
+                
     </VerticalStackLayout>
+   
 </ContentPage>
