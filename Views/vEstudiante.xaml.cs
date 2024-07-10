@@ -6,9 +6,9 @@ namespace emoralesS6.Views;
 
 public partial class vEstudiante : ContentPage
 {
-	private const string Url = "http://192.168.17.30/semana6/post.php";
+	private const string Url = "http://192.168.17.33/moviles/post.php";
 	private readonly HttpClient cliente = new HttpClient();
-	private ObservableCollection<Estudiante> est;
+	private ObservableCollection<Models.Estudiante> est;
 
 	public vEstudiante()
 	{
@@ -18,8 +18,13 @@ public partial class vEstudiante : ContentPage
 	public async void mostrar()
 	{
 		var content = await cliente.GetStringAsync(Url);
-		List<Estudiante> mostrar = new JsonConvert.DeserializeObject<List<Estudiante>>(content);
-		est=new ObservableCollection<Estudiante>(mostrar);
+		List<Models.Estudiante> mostrar = new JsonConvert.DeserializeObject<List<Models.Estudiante>>(content);
+        est =new ObservableCollection<Models.Estudiante>(mostrar);
 		listaEstudiates.ItemsSource = est;
 	}
+
+    private void btnAgregar_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }
